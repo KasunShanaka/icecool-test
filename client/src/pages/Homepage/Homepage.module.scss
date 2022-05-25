@@ -23,9 +23,9 @@
             padding: 10px;
             border-radius: 10px;
             box-shadow: 4px 4px 4px rgb(177, 177, 177);
-            transition: .3s;
+            transition: 0.3s;
 
-            .name{
+            .name {
             }
             .coneImage {
                 width: 150px;
@@ -44,7 +44,7 @@
                 font-weight: bold;
             }
 
-            &:hover{
+            &:hover {
                 background-color: #e7e5e5;
             }
         }
@@ -63,9 +63,9 @@
             padding: 10px;
             border-radius: 10px;
             box-shadow: 4px 4px 4px rgb(177, 177, 177);
-            transition: .3s;
+            transition: 0.3s;
 
-            &:hover{
+            &:hover {
                 background-color: #e7e5e5;
             }
             .price {
@@ -86,12 +86,12 @@
             padding: 10px;
             border-radius: 10px;
             box-shadow: 4px 4px 4px rgb(177, 177, 177);
-            transition: .3s;
+            transition: 0.3s;
 
-            &:hover{
+            &:hover {
                 background-color: #e7e5e5;
             }
-            
+
             .price {
                 font-weight: bold;
             }
@@ -101,9 +101,23 @@
             }
         }
     }
-    .resetButton{
+    .resetButton {
+        position: fixed;
+        right: 100px;
+        bottom: 20px;
+    }
+    .buyButton {
         position: fixed;
         right: 20px;
         bottom: 20px;
+    }
+    .totalPrice {
+        font-weight: bold;
+        font-size: 1.3rem;
+    }
+    .error {
+        font-weight: bold;
+        font-size: 1.3rem;
+        color: red;
     }
 }

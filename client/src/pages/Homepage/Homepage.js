@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import style from './Homepage.module.scss';
 // import classnames from 'classnames';
 
@@ -9,11 +10,13 @@ import Image1 from '../../img/image1.png';
 import Image2 from '../../img/image2.png';
 import Image3 from '../../img/image3.png';
 import Image4 from '../../img/image4.png';
+import { Alert } from '@mui/material';
 
 
 const Homepage = () => {
 
-  // const [activeCone, setActiveCone] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [errorMsg, setErrorMsg] = useState("");
   const [orderCone, setOrderCone] = useState({
     coneName: "",
     conePrice: 0,
@@ -25,12 +28,16 @@ const Homepage = () => {
   const [orderToppings, setOrderToppings] = useState({
     toppingName: "",
     toppingPrice: 0,
+    type: ""
   })
 
-  useEffect(() => {
-  }, [])
+  // useEffect(()=> {
+
+  // },[])
 
   const handleReset = () => {
+    setErrorMsg("");
+    setTotalPrice(0);
     setOrderCone({
       coneName: "",
       conePrice: 0,
@@ -42,14 +49,35 @@ const Homepage = () => {
     setOrderToppings({
       toppingName: "",
       toppingPrice: 0,
+      type: ""
     })
     console.log(orderCone, orderFlavor, orderToppings)
   }
 
+  const handleSubmit = async () => {
+    if (orderCone.coneName === "" || orderFlavor.flavorName === "" || orderToppings.toppingName === "") {
+      console.log("You haven't select any item")
+    } else {
+      var { data } = await axios.post("http://localhost:5000", {
+        orderCone,
+        orderFlavor,
+        orderToppings,
+      })
+        .catch(error => {
+          console.log(error.response.data.message)
+          setErrorMsg(error.response.data.message)
+        });
+      handleReset();
+    }
+    setTotalPrice(data.totalPrice)
+  }
+
   const handleCone = (name, price) => {
-    if (orderCone.coneName === "") {
-      setOrderCone(orderCone.coneName = name)
-      setOrderCone(orderCone.conePrice = price)
+    if (orderCone.coneName === "" || orderCone.conePrice === "") {
+      setOrderCone({
+        coneName: name,
+        conePrice: price,
+      })
       console.log(orderCone)
     } else {
       console.log("You Picked ", orderCone)
@@ -57,23 +85,30 @@ const Homepage = () => {
   }
 
   const handleFlavor = (name, price) => {
-    if (orderFlavor.flavorName === "") {
-      setOrderFlavor(orderFlavor.flavorName = name)
-      setOrderFlavor(orderFlavor.flavorPrice = price)
+    if (orderFlavor.flavorName === "" || orderFlavor.flavorPrice === "") {
+      setOrderFlavor({
+        flavorName: name,
+        flavorPrice: price,
+      })
       console.log(orderFlavor)
     } else {
       console.log("You Picked ", orderFlavor)
     }
   }
 
-  const handleToppings = (name, price) => {
-    if (orderToppings.toppingName === "") {
-      setOrderToppings(orderToppings.toppingName = name)
-      setOrderToppings(orderToppings.toppingPrice = price)
+  const handleToppings = (name, price, type) => {
+    if (orderToppings.toppingName === "" || orderToppings.toppingPrice === 0) {
+      setOrderToppings({
+        toppingName: name,
+        toppingPrice: price,
+        type: type,
+      })
+      // setOrderToppings(orderToppings.toppingPrice = price)
       console.log(orderToppings)
     } else {
-      console.log("You Picked ", orderToppings)
+      console.log("You already picked = ", orderToppings)
     }
+
   }
 
   const toppings = [
@@ -207,7 +242,7 @@ const Homepage = () => {
       <section className={style.toppings}>
         {
           toppings.map((i, j) => (
-            <div key={j} className={style.toppingsCard} onClick={() => handleToppings(i.name, i.price)}>
+            <div key={j} className={style.toppingsCard} onClick={() => handleToppings(i.name, i.price, i.type)}>
               <span className={style.name}>
                 {i.name} -
               </span>
@@ -229,6 +264,21 @@ const Homepage = () => {
         >
           Reset
         </Button>
+      </div>
+      <div className={style.buyButton}>
+        <Button
+          onClick={() => handleSubmit()}
+          variant='contained'
+          type='handleSubmit'
+        >
+          Buy
+        </Button>
+      </div>
+      <div className={style.totalPrice}>
+        Total Price - {totalPrice}
+      </div>
+      <div className={style.error}>
+        Error Message - {errorMsg}
       </div>
     </div>
   )
