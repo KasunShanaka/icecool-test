@@ -1,3 +1,109 @@
-.container{
-    
+.container {
+    margin: 0 20px;
+
+    .header {
+        background-color: #21100d;
+        padding: 20px 10px;
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 10px;
+    }
+
+    .coneSection {
+        margin-block: 10px;
+        text-align: center;
+
+        .coneCards {
+            text-align: center;
+            cursor: pointer;
+            display: inline-block;
+            width: 200px;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 4px 4px 4px rgb(177, 177, 177);
+            transition: .3s;
+
+            .name{
+            }
+            .coneImage {
+                width: 150px;
+                height: 150px;
+                margin: 10px auto;
+                border-radius: 10px;
+                overflow: hidden;
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+            .price {
+                font-weight: bold;
+            }
+
+            &:hover{
+                background-color: #e7e5e5;
+            }
+        }
+    }
+
+    .flavors {
+        margin-block: 10px;
+        text-align: center;
+
+        .flavorCards {
+            text-align: center;
+            cursor: pointer;
+            display: inline-block;
+            width: 250px;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 4px 4px 4px rgb(177, 177, 177);
+            transition: .3s;
+
+            &:hover{
+                background-color: #e7e5e5;
+            }
+            .price {
+                font-weight: bold;
+            }
+        }
+    }
+    .toppings {
+        margin-block: 10px;
+        text-align: center;
+
+        .toppingsCard {
+            text-align: center;
+            cursor: pointer;
+            display: inline-block;
+            width: 250px;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 4px 4px 4px rgb(177, 177, 177);
+            transition: .3s;
+
+            &:hover{
+                background-color: #e7e5e5;
+            }
+            
+            .price {
+                font-weight: bold;
+            }
+
+            .type {
+                color: rgb(1, 124, 79);
+            }
+        }
+    }
+    .resetButton{
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+    }
 }
