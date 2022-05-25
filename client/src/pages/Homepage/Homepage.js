@@ -6,11 +6,11 @@ import style from './Homepage.module.scss';
 //mui imports
 import Button from "@mui/material/Button";
 
+//image imports
 import Image1 from '../../img/image1.png';
 import Image2 from '../../img/image2.png';
 import Image3 from '../../img/image3.png';
 import Image4 from '../../img/image4.png';
-import { Alert } from '@mui/material';
 
 
 const Homepage = () => {
