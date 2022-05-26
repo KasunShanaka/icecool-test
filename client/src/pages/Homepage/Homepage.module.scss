@@ -1,5 +1,10 @@
+@import "../../styles/variables";
+
 .container {
-    margin: 0 20px;
+    margin: 0 auto;
+    max-width: 1280px;
+    box-sizing: border-box;
+    color: $primaryFontColor;
 
     .header {
         background-color: #21100d;
@@ -101,23 +106,36 @@
             }
         }
     }
-    .resetButton {
-        position: fixed;
-        right: 100px;
-        bottom: 20px;
-    }
-    .buyButton {
-        position: fixed;
-        right: 20px;
-        bottom: 20px;
-    }
-    .totalPrice {
-        font-weight: bold;
-        font-size: 1.3rem;
-    }
-    .error {
-        font-weight: bold;
-        font-size: 1.3rem;
-        color: red;
+
+    .footer {
+        background-color: #e7e5e5;
+        display: grid;
+        grid-template-columns: auto auto;
+        align-items: center;
+        border-radius: 20px;
+        padding: 10px;
+
+        .buttons {
+            display: flex;
+            justify-content: end;
+            gap: 20px;
+            padding: 20px 0;
+
+            .resetButton {
+            }
+            .buyButton {
+            }
+        }
+
+        .info {
+            .totalPrice {
+                font-weight: bold;
+                font-size: 1.3rem;
+            }
+            .error {
+                font-weight: bold;
+                font-size: 1.3rem;
+            }
+        }
     }
 }

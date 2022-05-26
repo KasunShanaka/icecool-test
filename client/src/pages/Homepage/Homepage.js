@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import style from './Homepage.module.scss';
-// import classnames from 'classnames';
 
 //mui imports
 import Button from "@mui/material/Button";
@@ -30,10 +29,6 @@ const Homepage = () => {
     toppingPrice: 0,
     type: ""
   })
-
-  // useEffect(()=> {
-
-  // },[])
 
   const handleReset = () => {
     setErrorMsg("");
@@ -257,29 +252,36 @@ const Homepage = () => {
           ))
         }
       </section>
-      <div className={style.resetButton}>
-        <Button
-          onClick={() => handleReset()}
-          variant='contained'
-        >
-          Reset
-        </Button>
-      </div>
-      <div className={style.buyButton}>
-        <Button
-          onClick={() => handleSubmit()}
-          variant='contained'
-          type='handleSubmit'
-        >
-          Buy
-        </Button>
-      </div>
-      <div className={style.totalPrice}>
-        Total Price - {totalPrice}
-      </div>
-      <div className={style.error}>
-        Error Message - {errorMsg}
-      </div>
+      <footer className={style.footer}>
+        <div className={style.info}>
+          <div className={style.totalPrice}>
+            Total Price - {totalPrice}
+          </div>
+          <div className={style.error}>
+            Error Message - {errorMsg}
+          </div>
+        </div>
+        <div className={style.buttons}>
+          <div className={style.resetButton}>
+            <Button
+              onClick={() => handleReset()}
+              variant='contained'
+            >
+              Reset
+            </Button>
+          </div>
+          <div className={style.buyButton}>
+            <Button
+              onClick={() => handleSubmit()}
+              variant='contained'
+              type='handleSubmit'
+            >
+              Buy
+            </Button>
+          </div>
+        </div>
+      </footer>
+
     </div>
   )
 }
